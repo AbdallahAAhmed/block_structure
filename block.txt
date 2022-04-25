@@ -1,0 +1,39 @@
+# import datetime
+import datetime
+
+# import hashlib
+import hashlib
+
+# import json
+import json
+
+# from flask From Flask, jsonify
+from flask import Flask, jsonify
+
+
+class BlockStructure {
+        # initial value
+        def __init__(self):
+            
+            #create a chain
+            self.chain = [] # That list it's list of blocks 
+            
+            # create a genesis block
+            self.create_block(proof = 1, previous_hash = '0')
+
+        
+        # function for create blocks
+        def create_block(self, proof, previous_hash):
+            block = {
+                'index': len(self.chain) + 1,
+                'timestamp': str(datetime.datetime.now()),
+                'proof': proof,
+                'previous_hash': previous_hash,
+                }
+            self.chain.append(block) # added to chain list
+            return block
+
+        # get previous block function
+        def get_previous_block(self):
+            return self.chain[-1]
+}
